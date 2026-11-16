@@ -1036,8 +1036,8 @@ page = head('About Brandy Gonzalez | Master Injector San Antonio | Beautified St
 page += nav()
 page += crumbs([('Home', 'Main.dc.html'), ('About', None)])
 page += f'''
-<section style="{WRAP}; padding-top: 48px; padding-bottom: 104px; display: flex; flex-wrap: wrap; gap: 56px; align-items: stretch">
-<div style="flex: 1 1 560px; min-width: 0; display: flex; flex-direction: column; justify-content: center; gap: 28px">
+<section style="{WRAP}; padding-top: 32px; padding-bottom: 104px; display: flex; flex-wrap: wrap; gap: 56px; align-items: flex-start">
+<div style="flex: 1 1 560px; min-width: 0; display: flex; flex-direction: column; justify-content: flex-start; gap: 28px">
 <div><p style="{EYEBROW}">Owner &amp; Master Injector</p>
 <h1 style="margin: 0; {DISP}; font-weight: 400; font-size: clamp(38px, 4.4vw, 62px); line-height: 1.02; letter-spacing: -0.01em">Brandy <em style="color: {ROSE}">Gonzalez</em></h1></div>
 <div>
@@ -1046,7 +1046,7 @@ page += f'''
 <p style="margin: 18px 0 0; font-size: 14px; color: {MUTED}">[ADD: licenses, certifications and years as an injector]</p>
 </div>
 </div>
-{ph('P01', 'Brandy, editorial portrait', 'flex: 1 1 440px; min-width: 0; min-height: 680px; border-radius: 400px 400px 4px 4px')}
+{ph('P01', 'Brandy, editorial portrait', 'flex: 0 1 420px; min-width: 0; min-height: 500px; border-radius: 400px 400px 4px 4px')}
 </section>
 <section style="background: #F1E4E0">
 <div style="{WRAP}; padding-top: 104px; padding-bottom: 104px; display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 40px">
