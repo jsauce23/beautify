@@ -1,31 +1,27 @@
-/* Beautified Studios booking widget. Renders into any <div class="bs-scheduler" data-preset="id">. */
+/* Beautified Studios booking form. Renders into any <div class="bs-scheduler" data-preset="id">. */
 (function () {
   var GG = 'https://beautifedstudios.glossgenius.com/services';
   var SERVICES = [
-    { id: 'flip', name: 'Lip Flip', price: '$150', dur: '60 min', note: 'Subtle, no filler' },
-    { id: 'rha', name: 'Lip, Chin & Cheek Filler', price: 'At consult', dur: '60 min', note: 'RHA filler' },
-    { id: 'dax', name: 'Daxxify', price: 'At consult', dur: '60 min', note: 'Softens fine lines' },
-    { id: 'jaw', name: 'Jaw Filler', price: '$1,449', dur: '90 min', note: 'Sculpted jawline' },
-    { id: 'nose', name: 'Non-Surgical Nose Job', price: 'From $1,500', dur: '90 min', note: 'Filler, no surgery' },
-    { id: 'bal', name: 'Full Facial Balancing', price: '$1,954', dur: '90 min', note: '3 syringes + lip flip' },
-    { id: 'perf', name: 'Perfecting Session', price: 'At consult', dur: '30 min', note: 'Botox or filler touch up' },
-    { id: 'teeth', name: 'Teeth Whitening', price: '[Price]', dur: '[Time]', note: 'In-studio LED whitening' },
-    { id: 'gem', name: 'Tooth Gem', price: '[Price]', dur: '[Time]', note: 'Add on to whitening' },
-    { id: 'pmu', name: 'Brow Color Correction', price: '[Price]', dur: '[Time]', note: 'Fix brows gone bad' },
-    { id: 'blush', name: 'Lip Blush', price: '$575', dur: '[Time]', note: 'Permanent lip color' },
-    { id: 'secret', name: 'The Secret Service', price: 'Ask Brandy', dur: '90 min', note: 'If you know, you know' }
+    { id: 'flip', name: 'Lip Flip', price: '$150' },
+    { id: 'rha', name: 'Lip, Chin or Cheek Filler', price: 'Priced at consult' },
+    { id: 'dax', name: 'Daxxify', price: 'Priced at consult' },
+    { id: 'jaw', name: 'Jaw Filler', price: '$1,449' },
+    { id: 'nose', name: 'Non-Surgical Nose Job', price: 'From $1,500' },
+    { id: 'bal', name: 'Full Facial Balancing', price: '$1,954' },
+    { id: 'perf', name: 'Perfecting Session', price: 'Priced at consult' },
+    { id: 'teeth', name: 'Teeth Whitening', price: '' },
+    { id: 'gem', name: 'Tooth Gem', price: '' },
+    { id: 'pmu', name: 'Brow Color Correction', price: '' },
+    { id: 'blush', name: 'Lip Blush', price: '$575' },
+    { id: 'consult', name: 'Not sure yet, I want a consultation', price: '' }
   ];
   var HOURS = { 2: [9, 17.5], 3: [9.5, 17], 4: [9.5, 17], 5: [9.5, 17], 6: [13.5, 16] };
   var DOWS = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
   var MONS = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
   var SERIF = "font-family: 'DM Serif Display', Georgia, serif";
-  var BTN = 'background: #4A1F28; color: #F7F0EC; border: 0; padding: 17px 34px; border-radius: 999px; font-family: inherit; font-size: 14px; letter-spacing: 0.1em; text-transform: uppercase; cursor: pointer';
-  var BTN_O = 'background: transparent; color: #1A1314; border: 1px solid #1A1314; padding: 16px 30px; border-radius: 999px; font-family: inherit; font-size: 14px; letter-spacing: 0.1em; text-transform: uppercase; cursor: pointer';
-  var OPT = 'width: 100%; display: flex; justify-content: space-between; align-items: center; gap: 16px; padding: 18px 22px; border-radius: 4px; font-family: inherit; cursor: pointer; text-align: left; ';
-  var ON = 'background: #F7F0EC; border: 1px solid #4A1F28; box-shadow: inset 4px 0 0 #8E4B57; ';
-  var OFF = 'background: #FFFFFF; border: 1px solid #DCC6C1; ';
-  var INP = 'font-family: inherit; font-size: 16px; padding: 15px; border: 1px solid #DCC6C1; border-radius: 4px; background: #F7F0EC; color: #1A1314';
-  var LAB = 'display: flex; flex-direction: column; gap: 8px; font-size: 13px; letter-spacing: 0.1em; text-transform: uppercase; color: #463A3C';
+  var LABEL = 'display: block; margin: 0 0 12px; ' + SERIF + '; font-size: 24px; color: #1A1314';
+  var INP = 'width: 100%; box-sizing: border-box; font-family: inherit; font-size: 17px; padding: 16px; border: 1px solid #DCC6C1; border-radius: 4px; background: #FFFFFF; color: #1A1314';
+  var SMALL = 'display: flex; flex-direction: column; gap: 6px; font-size: 15px; color: #463A3C';
 
   function esc(s) { return String(s).replace(/[&<>"']/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]; }); }
   function fmt(h) { var hr = Math.floor(h), m = h % 1 ? '30' : '00'; return (hr > 12 ? hr - 12 : hr) + ':' + m + ' ' + (hr >= 12 ? 'PM' : 'AM'); }
@@ -34,123 +30,83 @@
     for (var i = 1; i <= 15; i++) {
       var d = new Date(b.getFullYear(), b.getMonth(), b.getDate() + i), w = d.getDay();
       if (!HOURS[w]) continue;
-      out.push({ key: d.toISOString().slice(0, 10), w: w, dow: DOWS[w], dnum: d.getDate(), mon: MONS[d.getMonth()], full: DOWS[w] + ', ' + MONS[d.getMonth()] + ' ' + d.getDate() });
+      out.push({ key: d.getFullYear() + '-' + (d.getMonth() + 1) + '-' + d.getDate(), w: w, dow: DOWS[w], dnum: d.getDate(), mon: MONS[d.getMonth()], full: DOWS[w] + ', ' + MONS[d.getMonth()] + ' ' + d.getDate() });
     }
     return out;
   }
 
   function mount(root) {
-    var st = { step: 1, svc: root.getAttribute('data-preset') || null, day: null, time: null, name: '', phone: '', email: '', notes: '', sending: false, error: '' };
     var DAYS = days();
+    var st = { svc: root.getAttribute('data-preset') || '', day: null, time: null, name: '', phone: '', email: '', sending: false, done: false, error: '' };
     function svc() { return SERVICES.filter(function (s) { return s.id === st.svc; })[0] || null; }
     function day() { return DAYS.filter(function (d) { return d.key === st.day; })[0] || null; }
-    function set(p) { for (var k in p) st[k] = p[k]; render(); }
-
-    function steps() {
-      return ['Treatment', 'Date &amp; time', 'Details', 'Confirm'].map(function (l, i) {
-        var n = i + 1, c = st.step === n ? 'color: #4A1F28; font-weight: 600' : (st.step > n ? 'color: #8E4B57' : 'color: #463A3C');
-        return '<li style="font-size: 13px; letter-spacing: 0.1em; text-transform: uppercase; ' + c + '"><span style="' + SERIF + '; font-style: italic; margin-right: 8px">0' + n + '</span>' + l + '</li>';
-      }).join('');
-    }
-    function nav(back, next, label, disabled) {
-      return '<div style="margin-top: 30px; display: flex; justify-content: ' + (back ? 'space-between' : 'flex-end') + '; gap: 12px; flex-wrap: wrap">' +
-        (back ? '<button type="button" data-go="' + back + '" style="' + BTN_O + '">Back</button>' : '') +
-        '<button type="button" data-go="' + next + '" ' + (disabled ? 'disabled style="' + BTN + '; opacity: .4; cursor: not-allowed"' : 'style="' + BTN + '"') + '>' + label + '</button></div>';
-    }
-    function h3(t, sub) { return '<h3 style="margin: 0 0 6px; ' + SERIF + '; font-weight: 400; font-size: 34px">' + t + '</h3><p style="margin: 0 0 24px; color: #463A3C">' + sub + '</p>'; }
-
-    function body() {
-      var s = svc(), d = day();
-      if (st.step === 1) {
-        return h3('Choose a treatment', 'Not sure? Pick the closest one. Brandy finalizes your plan at your visit.') +
-          '<div style="display: flex; flex-direction: column; gap: 10px">' + SERVICES.map(function (x) {
-            return '<button type="button" data-svc="' + x.id + '" style="' + OPT + (st.svc === x.id ? ON : OFF) + '"><span style="display: flex; flex-direction: column; gap: 2px"><span style="' + SERIF + '; font-size: 22px; color: #1A1314">' + esc(x.name) + '</span><span style="font-size: 14px; color: #463A3C">' + esc(x.dur) + ' · ' + esc(x.note) + '</span></span><span style="font-size: 15px; font-weight: 500; color: #8E4B57; white-space: nowrap">' + esc(x.price) + '</span></button>';
-          }).join('') + '</div>' + nav(null, 2, 'Choose a time', !s);
-      }
-      if (st.step === 2) {
-        var times = [];
-        if (d) { var r = HOURS[d.w]; for (var h = r[0]; h <= r[1]; h += 1) times.push(fmt(h)); }
-        return h3('Pick a date and time', 'Choose your preferred time. Brandy confirms every request.') +
-          '<div style="display: flex; gap: 10px; overflow-x: auto; padding-bottom: 8px">' + DAYS.map(function (x) {
-            var on = st.day === x.key;
-            return '<button type="button" data-day="' + x.key + '" style="flex: 0 0 auto; width: 76px; display: flex; flex-direction: column; align-items: center; gap: 2px; padding: 14px 0; border-radius: 4px; font-family: inherit; cursor: pointer; ' + (on ? 'background: #4A1F28; color: #F7F0EC; border: 1px solid #4A1F28' : 'background: #FFFFFF; color: #1A1314; border: 1px solid #DCC6C1') + '"><span style="font-size: 12px; letter-spacing: 0.12em; text-transform: uppercase">' + x.dow + '</span><span style="' + SERIF + '; font-size: 30px; line-height: 1.1">' + x.dnum + '</span><span style="font-size: 12px">' + x.mon + '</span></button>';
-          }).join('') + '</div>' +
-          (d ? '<p style="margin: 28px 0 12px; font-size: 13px; letter-spacing: 0.1em; text-transform: uppercase; color: #463A3C">Open times · ' + d.full + '</p><div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(120px, 1fr)); gap: 10px">' + times.map(function (t) {
-            var on = st.time === t;
-            return '<button type="button" data-time="' + t + '" style="min-height: 48px; padding: 12px; border-radius: 4px; font-family: inherit; font-size: 15px; cursor: pointer; ' + (on ? 'background: #8E4B57; color: #FFFFFF; border: 1px solid #8E4B57' : 'background: #FFFFFF; color: #1A1314; border: 1px solid #DCC6C1') + '">' + t + '</button>';
-          }).join('') + '</div>' : '') + nav(1, 3, 'Your details', !st.time);
-      }
-      if (st.step === 3) {
-        var ok = st.name.trim() && st.phone.trim() && st.email.trim();
-        return h3('Your details', 'Your confirmation comes by text and email.') +
-          '<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 18px">' +
-          '<label style="' + LAB + '">Full name<input data-f="name" type="text" autocomplete="name" value="' + esc(st.name) + '" style="' + INP + '"></label>' +
-          '<label style="' + LAB + '">Mobile phone<input data-f="phone" type="tel" autocomplete="tel" value="' + esc(st.phone) + '" style="' + INP + '"></label>' +
-          '<label style="' + LAB + '; grid-column: 1 / -1">Email<input data-f="email" type="email" autocomplete="email" value="' + esc(st.email) + '" style="' + INP + '"></label>' +
-          '<label style="' + LAB + '; grid-column: 1 / -1">Anything Brandy should know? (optional)<input data-f="notes" type="text" value="' + esc(st.notes) + '" placeholder="First visit, goals, inspiration photos" style="' + INP + '"></label>' +
-          '</div>' + nav(2, 4, 'Review', !ok);
-      }
-      if (st.step === 4) {
-        return h3('Confirm your request', 'Brandy will text you to confirm your appointment. Payment and financing are handled at confirmation.') +
-          '<div style="border: 1px solid #DCC6C1; border-radius: 4px; padding: 24px; display: grid; gap: 10px; font-size: 16px">' +
-          '<div><strong>' + esc(s.name) + '</strong> · ' + esc(s.price) + '</div><div>' + d.full + ' at ' + st.time + '</div><div>' + esc(st.name) + ' · ' + esc(st.phone) + ' · ' + esc(st.email) + '</div></div>' +
-          '<p style="margin: 20px 0 0; font-size: 15px; color: #463A3C">By booking you agree to our cancellation policy: at least 24 hours notice, or 50% of the service is charged.</p>' +
-          (st.error ? '<p role="alert" style="margin: 16px 0 0; color: #8E4B57">' + esc(st.error) + '</p>' : '') +
-          '<div style="margin-top: 28px; display: flex; justify-content: space-between; gap: 12px; flex-wrap: wrap"><button type="button" data-go="3" style="' + BTN_O + '">Back</button>' +
-          '<div style="display: flex; gap: 12px; flex-wrap: wrap"><a href="' + GG + '" target="_blank" rel="noopener" style="' + BTN_O + '; text-decoration: none">Book &amp; pay on GlossGenius</a>' +
-          '<button type="button" data-submit="1" ' + (st.sending ? 'disabled ' : '') + 'style="' + BTN + '">' + (st.sending ? 'Sending…' : 'Request appointment') + '</button></div></div>';
-      }
-      return '<div style="text-align: center; padding: 32px 0"><svg aria-hidden="true" width="64" height="64" viewBox="0 0 64 64" fill="none" stroke="#8E4B57" stroke-width="1.5"><circle cx="32" cy="32" r="30"></circle><path d="M20 33l8 8 16-18"></path></svg>' +
-        '<h3 style="margin: 20px 0 8px; ' + SERIF + '; font-weight: 400; font-size: 44px">Request sent, <em style="color: #8E4B57">' + esc(st.name.trim().split(' ')[0] || 'gorgeous') + '</em></h3>' +
-        '<p style="margin: 0 auto; max-width: 460px; color: #463A3C">Brandy will text ' + esc(st.phone) + ' to confirm your ' + esc(s.name) + ' on ' + d.full + ' at ' + st.time + '.</p>' +
-        '<div style="margin-top: 28px"><button type="button" data-reset="1" style="' + BTN_O + '">Book another</button></div></div>';
-    }
-
-    function summary() {
-      var s = svc(), d = day();
-      var row = function (l, v) { return '<div><p style="margin: 0; font-size: 12px; letter-spacing: 0.12em; text-transform: uppercase; color: #D5BBB6">' + l + '</p>' + v + '</div>'; };
-      return '<p style="margin: 0 0 24px; font-size: 13px; letter-spacing: 0.14em; text-transform: uppercase; color: #E7B9C1">Your appointment</p><div style="display: flex; flex-direction: column; gap: 20px">' +
-        row('Treatment', '<p style="margin: 4px 0 0; ' + SERIF + '; font-size: 26px; line-height: 1.15; color: #FFFFFF">' + (s ? esc(s.name) : 'Choose a treatment') + '</p><p style="margin: 2px 0 0; font-size: 14px; color: #E9D5D1">' + (s ? esc(s.dur) : '') + '</p>') +
-        row('When', '<p style="margin: 4px 0 0; color: #FFFFFF">' + (d ? d.full + (st.time ? ' at ' + st.time : '') : 'Pick a date') + '</p>') +
-        row('Where', '<p style="margin: 4px 0 0; color: #FFFFFF">1603 Babcock Rd, Suite 230<br>San Antonio, TX 78229</p>') +
-        '<div style="border-top: 1px solid #6A3843; padding-top: 20px; display: flex; justify-content: space-between; align-items: baseline; gap: 12px"><span style="font-size: 12px; letter-spacing: 0.12em; text-transform: uppercase; color: #D5BBB6">Price</span><span style="' + SERIF + '; font-size: 28px; color: #FFFFFF">' + (s ? esc(s.price) : '—') + '</span></div></div>' +
-        '<div style="margin-top: 24px; border: 1px solid #6A3843; border-radius: 4px; padding: 18px"><p style="margin: 0; font-size: 15px; color: #FFFFFF; font-weight: 500">Buy now, pay later</p><p style="margin: 4px 0 0; font-size: 14px; color: #E9D5D1">Split treatments from $50 to $4,000 into payments.</p></div>';
-    }
+    function ready() { return svc() && st.day && st.time && st.name.trim() && st.phone.trim() && st.email.trim(); }
 
     function render() {
-      root.innerHTML = '<div style="display: flex; flex-wrap: wrap; gap: 24px; align-items: flex-start">' +
-        '<div style="flex: 999 1 560px; min-width: 0; background: #FFFFFF; border: 1px solid #DCC6C1; border-radius: 4px; padding: clamp(22px, 4vw, 40px); box-sizing: border-box">' +
-        '<ol aria-label="Booking steps" style="list-style: none; margin: 0 0 32px; padding: 0 0 20px; display: flex; flex-wrap: wrap; gap: 8px 28px; border-bottom: 1px solid #DCC6C1">' + steps() + '</ol>' + body() + '</div>' +
-        '<aside aria-label="Booking summary" style="flex: 1 1 300px; min-width: 0; background: #4A1F28; color: #F7F0EC; border-radius: 4px; padding: 36px; box-sizing: border-box">' + summary() + '</aside></div>';
+      var s = svc(), d = day();
+      if (st.done) {
+        root.innerHTML = '<div style="background: #FFFFFF; border: 1px solid #DCC6C1; border-radius: 4px; padding: 48px 24px; text-align: center">' +
+          '<svg aria-hidden="true" width="56" height="56" viewBox="0 0 64 64" fill="none" stroke="#8E4B57" stroke-width="1.5"><circle cx="32" cy="32" r="30"></circle><path d="M20 33l8 8 16-18"></path></svg>' +
+          '<h3 style="margin: 16px 0 8px; ' + SERIF + '; font-weight: 400; font-size: 38px">You\'re all set, ' + esc(st.name.trim().split(' ')[0]) + '</h3>' +
+          '<p style="margin: 0 auto; max-width: 440px; color: #463A3C">Brandy will text ' + esc(st.phone) + ' to confirm your ' + esc(s.name) + ' on ' + d.full + ' at ' + st.time + '.</p></div>';
+        return;
+      }
+      var opts = '<option value="">Choose a treatment</option>' + SERVICES.map(function (x) {
+        return '<option value="' + x.id + '"' + (st.svc === x.id ? ' selected' : '') + '>' + esc(x.name) + (x.price ? ' · ' + esc(x.price) : '') + '</option>';
+      }).join('');
+      var dayBtns = DAYS.map(function (x) {
+        var on = st.day === x.key;
+        return '<button type="button" data-day="' + x.key + '" aria-pressed="' + on + '" style="flex: 0 0 auto; width: 72px; display: flex; flex-direction: column; align-items: center; gap: 2px; padding: 12px 0; border-radius: 4px; font-family: inherit; cursor: pointer; ' + (on ? 'background: #4A1F28; color: #F7F0EC; border: 1px solid #4A1F28' : 'background: #FFFFFF; color: #1A1314; border: 1px solid #DCC6C1') + '"><span style="font-size: 13px">' + x.dow + '</span><span style="' + SERIF + '; font-size: 26px; line-height: 1.1">' + x.dnum + '</span><span style="font-size: 13px">' + x.mon + '</span></button>';
+      }).join('');
+      var times = '';
+      if (d) {
+        var r = HOURS[d.w], list = [];
+        for (var h = r[0]; h <= r[1]; h += 1) list.push(fmt(h));
+        times = '<div style="margin-top: 16px; display: grid; grid-template-columns: repeat(auto-fill, minmax(110px, 1fr)); gap: 10px">' + list.map(function (t) {
+          var on = st.time === t;
+          return '<button type="button" data-time="' + t + '" aria-pressed="' + on + '" style="min-height: 50px; border-radius: 4px; font-family: inherit; font-size: 16px; cursor: pointer; ' + (on ? 'background: #8E4B57; color: #FFFFFF; border: 1px solid #8E4B57' : 'background: #FFFFFF; color: #1A1314; border: 1px solid #DCC6C1') + '">' + t + '</button>';
+        }).join('') + '</div>';
+      }
+      var ok = ready();
+      root.innerHTML = '<form novalidate style="background: #FFFFFF; border: 1px solid #DCC6C1; border-radius: 4px; padding: clamp(24px, 4vw, 44px); display: flex; flex-direction: column; gap: 36px; max-width: 760px">' +
+        '<div><label for="bs-svc" style="' + LABEL + '">What are you booking?</label><select id="bs-svc" data-f="svc" style="' + INP + '; appearance: auto">' + opts + '</select></div>' +
+        '<div><p style="' + LABEL + '">Pick a day and time</p><div style="display: flex; gap: 10px; overflow-x: auto; padding-bottom: 6px">' + dayBtns + '</div>' + times + '</div>' +
+        '<div><p style="' + LABEL + '">Your info</p><div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 14px">' +
+        '<label style="' + SMALL + '">Name<input data-f="name" type="text" autocomplete="name" value="' + esc(st.name) + '" style="' + INP + '"></label>' +
+        '<label style="' + SMALL + '">Phone<input data-f="phone" type="tel" autocomplete="tel" value="' + esc(st.phone) + '" style="' + INP + '"></label>' +
+        '<label style="' + SMALL + '; grid-column: 1 / -1">Email<input data-f="email" type="email" autocomplete="email" value="' + esc(st.email) + '" style="' + INP + '"></label></div></div>' +
+        '<div>' + (st.error ? '<p role="alert" style="margin: 0 0 14px; color: #8E4B57">' + esc(st.error) + '</p>' : '') +
+        '<button type="submit" data-book="1" ' + (ok && !st.sending ? '' : 'disabled ') + 'style="width: 100%; background: #4A1F28; color: #F7F0EC; border: 0; padding: 20px; border-radius: 999px; font-family: inherit; font-size: 16px; letter-spacing: 0.1em; text-transform: uppercase; cursor: pointer; opacity: ' + (ok ? '1' : '.4') + '">' + (st.sending ? 'Booking…' : 'Book appointment') + '</button>' +
+        '<p style="margin: 14px 0 0; font-size: 14px; color: #463A3C; text-align: center">Brandy confirms by text. 24 hour cancellation policy. Prefer to pay now? <a href="' + GG + '" target="_blank" rel="noopener" style="color: #8E4B57">Book on GlossGenius</a></p></div>' +
+        '</form>';
+    }
+
+    function refreshButton() {
+      var b = root.querySelector('[data-book]'); if (!b) return;
+      var ok = ready(); b.disabled = !ok || st.sending; b.style.opacity = ok ? '1' : '.4';
     }
 
     root.addEventListener('click', function (e) {
-      var t = e.target.closest('button'); if (!t || t.disabled) return;
-      if (t.dataset.svc) set({ svc: t.dataset.svc });
-      else if (t.dataset.day) set({ day: t.dataset.day, time: null });
-      else if (t.dataset.time) set({ time: t.dataset.time });
-      else if (t.dataset.go) set({ step: +t.dataset.go, error: '' });
-      else if (t.dataset.reset) set({ step: 1, svc: null, day: null, time: null });
-      else if (t.dataset.submit) submit();
+      var t = e.target.closest('button'); if (!t || t.type === 'submit') return;
+      if (t.dataset.day) { st.day = t.dataset.day; st.time = null; render(); }
+      else if (t.dataset.time) { st.time = t.dataset.time; render(); }
+    });
+    root.addEventListener('change', function (e) {
+      if (e.target.dataset && e.target.dataset.f === 'svc') { st.svc = e.target.value; refreshButton(); }
     });
     root.addEventListener('input', function (e) {
-      var f = e.target.dataset && e.target.dataset.f; if (!f) return;
-      st[f] = e.target.value;
-      if (f !== 'notes') {
-        var ok = st.name.trim() && st.phone.trim() && st.email.trim();
-        var btn = root.querySelector('[data-go="4"]');
-        if (btn) { btn.disabled = !ok; btn.style.opacity = ok ? '1' : '.4'; btn.style.cursor = ok ? 'pointer' : 'not-allowed'; }
-      }
+      var f = e.target.dataset && e.target.dataset.f;
+      if (f && f !== 'svc') { st[f] = e.target.value; refreshButton(); }
     });
-
-    function submit() {
+    root.addEventListener('submit', function (e) {
+      e.preventDefault(); if (!ready() || st.sending) return;
       var s = svc(), d = day();
-      var data = { 'form-name': 'booking', treatment: s.name, date: d.full, time: st.time, name: st.name, phone: st.phone, email: st.email, notes: st.notes, page: location.pathname };
-      set({ sending: true, error: '' });
+      st.sending = true; st.error = ''; render();
+      var data = { 'form-name': 'booking', treatment: s.name, date: d.full, time: st.time, name: st.name, phone: st.phone, email: st.email, notes: '', page: location.pathname };
       fetch('/', { method: 'POST', headers: { 'Content-Type': 'application/x-www-form-urlencoded' }, body: new URLSearchParams(data).toString() })
-        .then(function (r) { if (!r.ok) throw new Error(); set({ sending: false, step: 5 }); })
-        .catch(function () { set({ sending: false, error: 'Something went wrong. Please call or text (726) 242-2952, or book on GlossGenius.' }); });
-    }
+        .then(function (r) { if (!r.ok) throw new Error(); st.sending = false; st.done = true; render(); })
+        .catch(function () { st.sending = false; st.error = 'Something went wrong. Please call or text (726) 242-2952.'; render(); });
+    });
     render();
   }
 

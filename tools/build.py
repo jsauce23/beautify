@@ -421,7 +421,7 @@ def faq_list(items, dark=False):
                    f'<p style="margin: 14px 0 0; color: {MUTED}; max-width: 720px">{a}</p></details>')
     return ''.join(out)
 
-def booking_block(preset='', heading='Book an appointment', sub='Choose your treatment, pick a time and pay online or in studio. Takes about one minute.'):
+def booking_block(preset='', heading='Book an appointment', sub='Choose what you are booking and pick a time. Brandy confirms by text.'):
     pre = f' preset="{preset}"' if preset else ''
     return f'''<section id="book" style="background: #F1E4E0; border-top: 1px solid {LINE}">
 <div style="{WRAP}; padding-top: 104px; padding-bottom: 104px">
@@ -848,7 +848,7 @@ for s in SERVICES:
 </section>
 '''
     page += unique_section(s)
-    page += booking_block(s['id'], f'Book {s["nav"]} in San Antonio', f'{s["short"]} is already selected. Pick your time and how you want to pay.')
+    page += booking_block(s['id'], f'Book {s["nav"]} in San Antonio', f'{s["short"]} is already selected. Just pick a time.')
     page += f'''
 <section style="{WRAP}; padding-top: 104px; padding-bottom: 72px; display: flex; flex-wrap: wrap; gap: 48px 80px">
 <div style="flex: 1 1 320px"><p style="{EYEBROW}">Questions</p><h2 style="{H2}">{s['nav']} questions</h2></div>
@@ -959,7 +959,7 @@ for a in AREAS:
 <div style="flex: 2 1 560px; min-width: 0">{faq_list(faqs)}</div>
 </section>
 '''
-    page += booking_block(feat['id'], f'Book from {a["name"]}', f'{feat["short"]} is preselected. Switch to any treatment in step one.')
+    page += booking_block(feat['id'], f'Book from {a["name"]}', f'Choose what you are booking and pick a time.')
     page += f'''
 <section style="{WRAP}; padding-top: 88px; padding-bottom: 104px">
 <p style="{EYEBROW}">Other areas we serve</p>
