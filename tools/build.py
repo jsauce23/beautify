@@ -76,8 +76,13 @@ PHOTOS = [
 ]
 PH = {c: (t, d) for c, t, d, _, _ in PHOTOS}
 
+MAP_SRC = 'https://www.google.com/maps?q=1603+Babcock+Rd+Suite+230,+San+Antonio,+TX+78229&amp;z=15&amp;output=embed'
+
 def ph(code, label, style=''):
     if code == 'MAP':
+        return (f'<div style="position: relative; overflow: hidden; background: #E8DCD8; {style}">'
+                f'<iframe title="Map to Beautified Studios, 1603 Babcock Rd, Suite 230, San Antonio" src="{MAP_SRC}" loading="lazy" referrerpolicy="no-referrer-when-downgrade" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0"></iframe></div>')
+    if code == 'MAP_OLD':
         title, detail = label, 'We create this map. Nothing needed from Brandy.'
     else:
         title, detail = PH.get(code, (label, ''))
@@ -451,7 +456,7 @@ def visit_block():
 <div style="display: flex; flex-wrap: wrap; gap: 14px"><a href="{BOOK_URL}" style="{BTN}">Book online</a><a href="{dirs}" style="{BTN_O}">Get directions</a></div>
 </div>
 <div style="flex: 1 1 480px; min-width: 0; display: flex; flex-direction: column; gap: 16px">
-{ph('P16', 'Building entrance &amp; suite sign', 'flex: 1 1 auto; min-height: 300px; border-radius: 4px')}
+{ph('MAP', 'Beautified Studios location', 'flex: 1 1 auto; min-height: 340px; border-radius: 4px')}
 <div style="display: flex; gap: 16px; flex-wrap: wrap">
 {ph('P04', 'Studio interior', 'flex: 1 1 200px; aspect-ratio: 4 / 3; border-radius: 4px')}
 {ph('P05', 'Treatment room detail', 'flex: 1 1 200px; aspect-ratio: 4 / 3; border-radius: 4px')}
