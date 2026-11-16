@@ -411,6 +411,7 @@ def footer():
 <div style="{WRAP}; padding-top: 24px; padding-bottom: 32px; border-top: 1px solid #6A3843; display: flex; flex-wrap: wrap; gap: 12px; justify-content: space-between; font-size: 13px; color: #D5BBB6">
 <span>© 2026 Beautified Studios · San Antonio, Texas</span>
 <span>Results vary. Every treatment begins with a consultation.</span>
+<span>Powered by <a href="https://jrnee.ai" target="_blank" rel="noopener" style="color: #E9D5D1">JRNEE Technologies LLC</a></span>
 </div>
 <div aria-hidden="true" style="overflow: hidden; line-height: 0.8; padding-bottom: 12px"><p style="margin: 0; {DISP}; font-size: 11vw; letter-spacing: -0.01em; color: #5A2A34; white-space: nowrap; text-align: center">Beautified</p></div>
 </footer>
