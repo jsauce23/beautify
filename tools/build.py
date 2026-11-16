@@ -23,7 +23,7 @@ FB = 'https://www.facebook.com/profile.php?id=100071732994266'
 
 EYEBROW = f'margin: 0 0 18px; font-size: 14px; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; color: {ROSE}'
 EYEBROW_D = 'margin: 0 0 18px; font-size: 14px; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; color: #E7B9C1'
-H2 = f'margin: 0; {DISP}; font-weight: 400; font-size: clamp(40px, 5.2vw, 76px); line-height: 1.02; letter-spacing: -0.01em'
+H2 = f'margin: 0; {DISP}; font-weight: 400; font-size: clamp(34px, 3.8vw, 54px); line-height: 1.02; letter-spacing: -0.01em'
 H3 = f'margin: 0; {DISP}; font-weight: 400; font-size: 30px; line-height: 1.15; letter-spacing: -0.01em'
 P = f'margin: 0; color: {MUTED}'
 BTN = f'display: inline-block; background: {WINE}; color: {PAPER}; text-decoration: none; padding: 18px 34px; border-radius: 999px; font-size: 14px; letter-spacing: 0.1em; text-transform: uppercase'
@@ -93,7 +93,7 @@ def ph(code, label, style=''):
 # ---------- data ----------
 SERVICES = [
     dict(id='rha', slug='lip-filler-san-antonio', short='Lip, Chin &amp; Cheek Filler', nav='Lip Filler',
-         h1='Lip Filler, Chin &amp; Cheek Filler in San Antonio, TX',
+         h1='Lip, Chin &amp; Cheek Filler in San Antonio',
          title='Lip Filler San Antonio | RHA Lip, Chin &amp; Cheek Filler | Beautified Studios',
          meta='RHA lip filler, chin filler and cheek filler in San Antonio, TX by Master Injector Brandy Gonzalez. Natural, balanced results. Book online.',
          price='Priced at consult', dur='60 min', tag='RHA filler',
@@ -210,7 +210,7 @@ SERVICES += [
                ('Can I get a gem with teeth whitening?', 'Yes. Whitening first, then the gem, is the most popular combo.')],
          ba=['P23', 'Tooth gem close up']),
     dict(id='pmu', variant='dax', cat='Smile, brows &amp; lips', slug='brow-color-correction-san-antonio', short='Brow Color Correction', nav='Brow Correction',
-         h1='Brow Color Correction &amp; Permanent Makeup in San Antonio',
+         h1='Brow Color Correction in San Antonio, TX',
          title='Brow Color Correction San Antonio | Permanent Makeup | Beautified Studios',
          meta='Brow color correction and permanent makeup in San Antonio. Fix faded, discolored or uneven brows at Beautified Studios. Book online.',
          price='[Price]', dur='[Time]', tag='Permanent makeup', eb_extra=' · Brows gone bad specialist',
@@ -699,7 +699,7 @@ def facts(s, sc):
             f'<div style="{cell}"><p style="{lab}">Appointment</p><p style="{val}">{s["dur"]}</p></div>'
             f'<div style="{cell}"><p style="{lab}">Financing</p><p style="{val}">Available</p></div></div>')
 
-def h1s(size='clamp(48px, 6.4vw, 96px)', color=INK, align='left'):
+def h1s(size='clamp(38px, 4.4vw, 62px)', color=INK, align='left'):
     return f'margin: 0; {DISP}; font-weight: 400; font-size: {size}; line-height: 1.04; letter-spacing: -0.01em; color: {color}; text-align: {align}'
 
 def service_hero(s):
@@ -716,24 +716,20 @@ def service_hero(s):
     if i == 'flip':  # centered, giant price
         return f'''<section style="background: {sc['bg']}"><div style="{WRAP}; padding-top: 64px; padding-bottom: 88px; text-align: center">
 <p style="{eb}">{s['tag']} · {s['dur']}</p><h1 style="{h1s(align='center')}">{s['h1']}</h1>
-<p style="margin: 8px 0 0; {DISP}; font-size: clamp(120px, 18vw, 260px); line-height: 1; letter-spacing: -0.01em; color: {ROSE}">{s.get('big', '$150')}</p>
+<p style="margin: 8px 0 0; {DISP}; font-size: clamp(72px, 9vw, 120px); line-height: 1; letter-spacing: -0.01em; color: {ROSE}">{s.get('big', '$150')}</p>
 <p style="{lead}; margin-left: auto; margin-right: auto">{s['line']}{' One flat price, no surprises.' if s['id'] == 'flip' else ''}</p>
 <div style="margin-top: 32px; display: flex; flex-wrap: wrap; gap: 14px; justify-content: center"><a href="#book" style="{BTN}">Book {s['nav']}</a><a href="{s.get('compare', ('#compare', 'Lip flip vs filler'))[0]}" style="{BTN_O}">{s.get('compare', ('#compare', 'Lip flip vs filler'))[1]}</a></div>
 <div style="margin-top: 64px; display: flex; flex-wrap: wrap; gap: 16px">{ph(s['ba'][0], 'Before', 'flex: 1 1 280px; aspect-ratio: 1 / 1; border-radius: 4px')}{ph(s['ba'][0], 'After', 'flex: 1 1 280px; aspect-ratio: 1 / 1; border-radius: 4px')}{ph(s.get('extra_ph', ('P17', 'Lips close up'))[0], s.get('extra_ph', ('P17', 'Lips close up'))[1], 'flex: 1 1 280px; aspect-ratio: 1 / 1; border-radius: 4px')}</div>
 </div></section>'''
     if i == 'dax':  # dark, circle photo
         return f'''<section style="background: {sc['bg']}; color: {sc['fg']}"><div style="{WRAP}; padding-top: 72px; padding-bottom: 104px; display: flex; flex-wrap: wrap; gap: 64px; align-items: center">
-{ph(s['ba'][0], s['ba'][1], 'flex: 0 1 460px; min-width: 280px; aspect-ratio: 1 / 1; border-radius: 999px; margin: 0 auto')}
+{ph(s['ba'][0], s['ba'][1], 'flex: 0 1 400px; min-width: 260px; aspect-ratio: 1 / 1; border-radius: 999px; margin: 0 auto')}
 <div style="flex: 1 1 520px; min-width: 0"><p style="{eb}">{s['tag']}{s.get('eb_extra', ' · Daxxify specialist')}</p><h1 style="{h1s(color=PAPER)}">{s['h1']}</h1><p style="{lead}">{s['line']}</p><div style="margin-top: 36px">{facts(s, sc)}</div>{cta}</div>
 </div></section>'''
-    if i == 'jaw':  # full width photo with overlay card
-        return f'''<section style="background: {sc['bg']}; color: {sc['fg']}"><div style="{WRAP}; padding-top: 40px; padding-bottom: 96px">
-<div style="position: relative">
-{ph(s['ba'][0], s['ba'][1], 'width: 100%; min-height: 640px; border-radius: 4px')}
-<div class="ov-card" style="position: absolute; left: 32px; bottom: 32px; max-width: 620px; background: {INK}; padding: 44px; box-sizing: border-box; margin-right: 32px">
-<p style="{eb}">{s['tag']}</p><h1 style="{h1s('clamp(44px, 5.4vw, 80px)', PAPER)}">{s['h1']}</h1><p style="{lead}">{s['line']}</p>{cta}
-</div></div>
-<div style="margin-top: 40px">{facts(s, sc)}</div>
+    if i == 'jaw':  # dark split, square photo
+        return f'''<section style="background: {sc['bg']}; color: {sc['fg']}"><div style="{WRAP}; padding-top: 56px; padding-bottom: 96px; display: flex; flex-wrap: wrap; gap: 56px; align-items: center">
+<div style="flex: 1 1 520px; min-width: 0"><p style="{eb}">{s['tag']}</p><h1 style="{h1s(color=PAPER)}">{s['h1']}</h1><p style="{lead}">{s['line']}</p><div style="margin-top: 36px">{facts(s, sc)}</div>{cta}</div>
+{ph(s['ba'][0], s['ba'][1], 'flex: 1 1 420px; min-width: 0; aspect-ratio: 4 / 5; border-radius: 4px')}
 </div></section>'''
     if i == 'nose':  # before/after split hero
         return f'''<section style="background: {sc['bg']}"><div style="{WRAP}; padding-top: 48px; padding-bottom: 96px">
@@ -891,30 +887,33 @@ def area_hero(a, dirs):
     addr_card = lambda bg, fg, sub: f'''<div style="background: {bg}; color: {fg}; padding: 36px; border-radius: 4px; box-sizing: border-box"><p style="margin: 0; font-size: 11px; letter-spacing: 0.3em; text-transform: uppercase; color: {sub}">Studio for {name} clients</p><p style="margin: 14px 0 0; {DISP}; font-size: 28px; line-height: 1.2">{ADDR1}<br>{ADDR2}</p><p style="margin: 14px 0 0; color: {sub}">Tue to Sat · {PHONE}</p><a href="{dirs}" style="display: inline-block; margin-top: 20px; color: {fg}; font-size: 14px; letter-spacing: 0.1em; text-transform: uppercase">Directions from {name} →</a></div>'''
     if st == 'darkcard':
         return f'''<section style="background: {WINE}; color: {PAPER}"><div style="{WRAP}; padding-top: 72px; padding-bottom: 96px; display: flex; flex-wrap: wrap; gap: 56px; align-items: center">
-<div style="flex: 2 1 600px; min-width: 0"><p style="{EYEBROW_D}">Serving {a['full']}</p><h1 style="{h1s('clamp(48px, 6.4vw, 100px)', PAPER)}">{h1}</h1><p style="margin: 24px 0 0; font-size: 19px; color: #E9D5D1; max-width: 560px">{a['p1']}</p><div style="margin-top: 28px"><a href="#book" style="{BTN_L}">Book now</a></div></div>
+<div style="flex: 2 1 600px; min-width: 0"><p style="{EYEBROW_D}">Serving {a['full']}</p><h1 style="{h1s('clamp(38px, 4.4vw, 62px)', PAPER)}">{h1}</h1><p style="margin: 24px 0 0; font-size: 19px; color: #E9D5D1; max-width: 560px">{a['p1']}</p><div style="margin-top: 28px"><a href="#book" style="{BTN_L}">Book now</a></div></div>
 <div style="flex: 1 1 340px; min-width: 0">{addr_card(PAPER, INK, MUTED)}</div></div></section>'''
     if st == 'centered':
         chips = ''.join(f'<a href="{s["slug"]}.dc.html" style="border: 1px solid {LINE}; background: #FFFFFF; border-radius: 999px; padding: 12px 20px; font-size: 15px; color: {INK}; text-decoration: none">{s["nav"]} · {s["price"]}</a>' for s in SERVICES)
-        return f'''<section style="{WRAP}; padding-top: 88px; padding-bottom: 88px; text-align: center"><p style="{EYEBROW}">Serving {a['full']}</p><h1 style="{h1s('clamp(52px, 7.4vw, 120px)', INK, 'center')}">{h1}</h1><p style="{P}; font-size: 19px; max-width: 620px; margin: 24px auto 0">{a['p1']}</p>
+        return f'''<section style="{WRAP}; padding-top: 88px; padding-bottom: 88px; text-align: center"><p style="{EYEBROW}">Serving {a['full']}</p><h1 style="{h1s('clamp(38px, 4.4vw, 62px)', INK, 'center')}">{h1}</h1><p style="{P}; font-size: 19px; max-width: 620px; margin: 24px auto 0">{a['p1']}</p>
 <div style="margin-top: 36px; display: flex; flex-wrap: wrap; gap: 10px; justify-content: center">{chips}</div><div style="margin-top: 32px; display: flex; flex-wrap: wrap; gap: 14px; justify-content: center"><a href="#book" style="{BTN}">Book now</a><a href="{dirs}" style="{BTN_O}">Directions from {name}</a></div></section>'''
     if st == 'photo':
         return f'''<section style="{WRAP}; padding-top: 40px; padding-bottom: 96px"><div style="display: flex; flex-wrap: wrap; gap: 0">
 {ph('P04', 'Studio interior', 'flex: 1 1 520px; min-height: 600px')}
-<div style="flex: 1 1 460px; min-width: 0; background: {INK}; color: {PAPER}; padding: 56px; box-sizing: border-box; display: flex; flex-direction: column; justify-content: center"><p style="{EYEBROW_D}">Serving {a['full']}</p><h1 style="{h1s('clamp(44px, 5vw, 76px)', PAPER)}">{h1}</h1><p style="margin: 24px 0 0; font-size: 18px; color: #D9C9C6">{a['p1']}</p><div style="margin-top: 28px; display: flex; flex-wrap: wrap; gap: 14px"><a href="#book" style="{BTN_L}">Book now</a><a href="{dirs}" style="display: inline-block; border: 1px solid {PAPER}; color: {PAPER}; text-decoration: none; padding: 17px 32px; border-radius: 999px; font-size: 14px; letter-spacing: 0.1em; text-transform: uppercase">Directions</a></div></div>
+<div style="flex: 1 1 460px; min-width: 0; background: {INK}; color: {PAPER}; padding: 56px; box-sizing: border-box; display: flex; flex-direction: column; justify-content: center"><p style="{EYEBROW_D}">Serving {a['full']}</p><h1 style="{h1s('clamp(34px, 3.8vw, 54px)', PAPER)}">{h1}</h1><p style="margin: 24px 0 0; font-size: 18px; color: #D9C9C6">{a['p1']}</p><div style="margin-top: 28px; display: flex; flex-wrap: wrap; gap: 14px"><a href="#book" style="{BTN_L}">Book now</a><a href="{dirs}" style="display: inline-block; border: 1px solid {PAPER}; color: {PAPER}; text-decoration: none; padding: 17px 32px; border-radius: 999px; font-size: 14px; letter-spacing: 0.1em; text-transform: uppercase">Directions</a></div></div>
 </div></section>'''
     if st == 'stats':
         stat = lambda big, small: f'<div style="flex: 1 1 200px; border-top: 1px solid {INK}; padding-top: 20px"><p style="margin: 0; {DISP}; font-size: 52px; line-height: 1">{big}</p><p style="margin: 8px 0 0; font-size: 14px; color: {MUTED}">{small}</p></div>'
-        return f'''<section style="background: #F1E4E0"><div style="{WRAP}; padding-top: 72px; padding-bottom: 88px"><p style="{EYEBROW}">Serving {a['full']}</p><h1 style="{h1s('clamp(52px, 7vw, 112px)')}; max-width: 1000px">{h1}</h1>
+        return f'''<section style="background: #F1E4E0"><div style="{WRAP}; padding-top: 72px; padding-bottom: 88px"><p style="{EYEBROW}">Serving {a['full']}</p><h1 style="{h1s('clamp(38px, 4.4vw, 62px)')}; max-width: 1000px">{h1}</h1>
 <div style="margin-top: 48px; display: flex; flex-wrap: wrap; gap: 24px 40px">{stat('$150', 'Lip flip, our most popular first treatment')}{stat('10 yrs', 'Brandy’s experience in beauty')}{stat('$50–$4k', 'Range eligible for pay later financing')}{stat('1 min', 'To book online')}</div>
 <div style="margin-top: 40px; display: flex; flex-wrap: wrap; gap: 14px; align-items: center"><a href="#book" style="{BTN}">Book now</a><a href="{dirs}" style="{BTN_O}">Directions from {name}</a></div></div></section>'''
     if st == 'map':
-        return f'''<section style="{WRAP}; padding-top: 48px; padding-bottom: 96px"><div style="position: relative">
-{ph('MAP', f'Map: {name} to 1603 Babcock Rd', 'width: 100%; min-height: 560px; border-radius: 4px; background: #E8DCD8')}
-<div class="ov-card" style="position: absolute; top: 32px; left: 32px; right: 32px; max-width: 640px; background: {PAPER}; padding: 44px; box-sizing: border-box; border-radius: 4px"><p style="{EYEBROW}">Serving {a['full']}</p><h1 style="{h1s('clamp(40px, 4.8vw, 72px)')}">{h1}</h1><p style="{P}; margin-top: 18px">{a['p1']}</p><div style="margin-top: 24px; display: flex; flex-wrap: wrap; gap: 14px"><a href="#book" style="{BTN}">Book now</a><a href="{dirs}" style="{BTN_O}">Get directions</a></div></div>
-</div></section>'''
+        return f'''<section style="{WRAP}; padding-top: 48px; padding-bottom: 96px">
+<div style="display: flex; flex-wrap: wrap; gap: 24px 64px; align-items: flex-end; margin-bottom: 40px">
+<div style="flex: 2 1 560px; min-width: 0"><p style="{EYEBROW}">Serving {a['full']}</p><h1 style="{h1s()}">{h1}</h1></div>
+<div style="flex: 1 1 340px; min-width: 0"><p style="{P}; font-size: 18px">{a['p1']}</p><div style="margin-top: 24px; display: flex; flex-wrap: wrap; gap: 14px"><a href="#book" style="{BTN}">Book now</a><a href="{dirs}" style="{BTN_O}">Get directions</a></div></div>
+</div>
+{ph('MAP', f'Map: {name} to 1603 Babcock Rd', 'width: 100%; min-height: 420px; border-radius: 4px; background: #E8DCD8')}
+</section>'''
     if st == 'rose':
         return f'''<section style="background: {ROSE}; color: #FFFFFF"><div style="{WRAP}; padding-top: 72px; padding-bottom: 96px; display: flex; flex-wrap: wrap; gap: 56px; align-items: flex-end">
-<div style="flex: 2 1 640px; min-width: 0"><p style="margin: 0 0 18px; font-size: 12px; letter-spacing: 0.3em; text-transform: uppercase; color: #FFE3E8">Serving {a['full']} &amp; the Hill Country</p><h1 style="{h1s('clamp(52px, 7vw, 112px)', '#FFFFFF')}">{h1}</h1></div>
+<div style="flex: 2 1 640px; min-width: 0"><p style="margin: 0 0 18px; font-size: 12px; letter-spacing: 0.3em; text-transform: uppercase; color: #FFE3E8">Serving {a['full']} &amp; the Hill Country</p><h1 style="{h1s('clamp(38px, 4.4vw, 62px)', '#FFFFFF')}">{h1}</h1></div>
 <div style="flex: 1 1 340px; min-width: 0"><p style="margin: 0; font-size: 19px; color: #F7E4E7">{a['p1']}</p><div style="margin-top: 28px; display: flex; flex-wrap: wrap; gap: 14px"><a href="#book" style="{BTN_L}">Book now</a><a href="{dirs}" style="display: inline-block; border: 1px solid #FFFFFF; color: #FFFFFF; text-decoration: none; padding: 17px 32px; border-radius: 999px; font-size: 14px; letter-spacing: 0.1em; text-transform: uppercase">Directions</a></div></div>
 </div></section>'''
 
@@ -974,7 +973,7 @@ page += nav()
 page += crumbs([('Home', 'Main.dc.html'), ('Treatments', None)])
 page += f'''
 <section style="background: {INK}; color: {PAPER}"><div style="{WRAP}; padding-top: 72px; padding-bottom: 88px; display: flex; flex-wrap: wrap; gap: 48px 64px; align-items: flex-end">
-<div style="flex: 2 1 600px; min-width: 0"><p style="{EYEBROW_D}">Treatments &amp; prices</p><h1 style="margin: 0; {DISP}; font-weight: 400; font-size: clamp(52px, 7vw, 112px); line-height: 1.04; letter-spacing: -0.01em">Injectable Treatments in <em style="color: #E7B9C1">San Antonio</em></h1></div>
+<div style="flex: 2 1 600px; min-width: 0"><p style="{EYEBROW_D}">Treatments &amp; prices</p><h1 style="margin: 0; {DISP}; font-weight: 400; font-size: clamp(38px, 4.4vw, 62px); line-height: 1.04; letter-spacing: -0.01em">Injectable Treatments in <em style="color: #E7B9C1">San Antonio</em></h1></div>
 <div style="flex: 1 1 340px; min-width: 0; display: grid; grid-template-columns: 1fr auto; gap: 12px 24px; font-size: 16px; border-top: 1px solid #3A2F31; padding-top: 20px">
 <span>Lip Flip</span><span>$150</span><span>Jaw Filler</span><span>$1,449</span><span>Non-Surgical Nose Job</span><span>From $1,500</span><span>Full Facial Balancing</span><span>$1,954</span><span>Lip Filler · Daxxify</span><span>At consult</span>
 </div></div></section>
@@ -1000,7 +999,7 @@ page += nav()
 page += crumbs([('Home', 'Main.dc.html'), ('Areas we serve', None)])
 page += f'''
 <section style="{WRAP}; padding-top: 48px; padding-bottom: 72px; display: flex; flex-wrap: wrap; gap: 32px 64px; align-items: flex-end">
-<h1 style="flex: 2 1 640px; margin: 0; {DISP}; font-weight: 400; font-size: clamp(52px, 7vw, 112px); line-height: 1.04; letter-spacing: -0.01em">Areas We Serve in <em style="color: {ROSE}">San Antonio</em></h1>
+<h1 style="flex: 2 1 640px; margin: 0; {DISP}; font-weight: 400; font-size: clamp(38px, 4.4vw, 62px); line-height: 1.04; letter-spacing: -0.01em">Areas We Serve in <em style="color: {ROSE}">San Antonio</em></h1>
 <p style="{P}; flex: 1 1 340px; font-size: 19px">Our studio is at 1603 Babcock Rd, Suite 230. Clients book with us from across San Antonio and the Hill Country.</p>
 </section>
 <section style="{WRAP}; padding-bottom: 72px">{ph('MAP', 'Map of San Antonio with studio pin and service areas', 'width: 100%; min-height: 480px; border-radius: 4px; background: #E8DCD8')}</section>
@@ -1020,7 +1019,7 @@ page += crumbs([('Home', 'Main.dc.html'), ('FAQ', None)])
 page += f'''
 <section style="background: #F1E4E0; margin-top: 28px"><div style="{WRAP}; padding-top: 88px; padding-bottom: 88px; text-align: center">
 <p style="{EYEBROW}">{sum(len(i) for _, i in FAQ_GROUPS)} answers</p>
-<h1 style="margin: 0; {DISP}; font-weight: 400; font-size: clamp(52px, 7vw, 112px); line-height: 1.04; letter-spacing: -0.01em">Injectables FAQ</h1>
+<h1 style="margin: 0; {DISP}; font-weight: 400; font-size: clamp(38px, 4.4vw, 62px); line-height: 1.04; letter-spacing: -0.01em">Injectables FAQ</h1>
 <p style="{P}; margin: 24px auto 0; font-size: 19px; max-width: 560px">Lip filler, Daxxify, pricing, financing and booking at Beautified Studios in San Antonio. Still have a question? Call or text <a href="{TEL}" style="color: {INK}">{PHONE}</a>.</p>
 <div style="margin-top: 32px; display: flex; flex-wrap: wrap; gap: 10px; justify-content: center">{''.join(f'<a href="#g{n}" style="background: #FFFFFF; border-radius: 999px; padding: 12px 22px; font-size: 15px; color: {INK}; text-decoration: none">{g}</a>' for n, (g, _) in enumerate(FAQ_GROUPS))}</div>
 </div></section><div style="height: 88px"></div>
@@ -1040,7 +1039,7 @@ page += f'''
 <section style="{WRAP}; padding-top: 48px; padding-bottom: 104px; display: flex; flex-wrap: wrap; gap: 56px; align-items: stretch">
 <div style="flex: 1 1 560px; min-width: 0; display: flex; flex-direction: column; justify-content: space-between; gap: 40px">
 <div><p style="{EYEBROW}">Owner &amp; Master Injector</p>
-<h1 style="margin: 0; {DISP}; font-weight: 400; font-size: clamp(56px, 7.6vw, 124px); line-height: 1.02; letter-spacing: -0.01em">Brandy <em style="color: {ROSE}">Gonzalez</em></h1></div>
+<h1 style="margin: 0; {DISP}; font-weight: 400; font-size: clamp(38px, 4.4vw, 62px); line-height: 1.02; letter-spacing: -0.01em">Brandy <em style="color: {ROSE}">Gonzalez</em></h1></div>
 <div>
 <p style="{P}; font-size: 19px; max-width: 540px">Brandy founded Beautified Studios with one promise: to fulfill any of your beautifying needs. With ten years in beauty and training through Monarch Master Injectors, she specializes in Daxxify and RHA filler.</p>
 <p style="{P}; margin-top: 18px; max-width: 540px">Her approach is consultation first. Every client gets a plan built around their own proportions, so results look natural, balanced and unmistakably theirs.</p>
@@ -1081,7 +1080,7 @@ page += nav()
 page += f'''
 <section style="{WRAP}; padding-top: 64px; padding-bottom: 104px">
 <p style="{EYEBROW}">Online booking · San Antonio</p>
-<h1 style="margin: 0 0 48px; {DISP}; font-weight: 400; font-size: clamp(52px, 7vw, 104px); line-height: 1.04; letter-spacing: -0.01em">Book your <em style="color: {ROSE}">appointment</em></h1>
+<h1 style="margin: 0 0 48px; {DISP}; font-weight: 400; font-size: clamp(38px, 4.4vw, 62px); line-height: 1.04; letter-spacing: -0.01em">Book your <em style="color: {ROSE}">appointment</em></h1>
 <dc-import name="Scheduler" hint-size="100%,940px"></dc-import>
 </section>
 '''
@@ -1151,7 +1150,7 @@ page += nav()
 page += crumbs([('Home', 'Main.dc.html'), ('Blog', None)])
 page += f'''
 <section style="{WRAP}; padding-top: 48px; padding-bottom: 72px; display: flex; flex-wrap: wrap; gap: 32px 64px; align-items: flex-end">
-<h1 style="flex: 2 1 640px; margin: 0; {DISP}; font-weight: 400; font-size: clamp(52px, 7vw, 112px); line-height: 1.04; letter-spacing: -0.01em">Beautified Studios <em style="color: {ROSE}">Blog</em></h1>
+<h1 style="flex: 2 1 640px; margin: 0; {DISP}; font-weight: 400; font-size: clamp(38px, 4.4vw, 62px); line-height: 1.04; letter-spacing: -0.01em">Beautified Studios <em style="color: {ROSE}">Blog</em></h1>
 <p style="{P}; flex: 1 1 340px; font-size: 19px">Guides to lip filler, Daxxify and other injectables from San Antonio Master Injector Brandy Gonzalez. New posts every week.</p>
 </section>
 <section style="{WRAP}; padding-bottom: 88px">
@@ -1195,7 +1194,7 @@ for p_ in POSTS:
 <article>
 <header style="max-width: 900px; margin: 0 auto; padding: 56px 32px 48px; box-sizing: border-box">
 <p style="{EYEBROW}">{p_['cat']} · {p_['date']} · {p_['read']}</p>
-<h1 style="margin: 0; {DISP}; font-weight: 400; font-size: clamp(44px, 5.6vw, 80px); line-height: 1.0; letter-spacing: -0.01em">{p_['title']}</h1>
+<h1 style="margin: 0; {DISP}; font-weight: 400; font-size: clamp(34px, 3.8vw, 54px); line-height: 1.0; letter-spacing: -0.01em">{p_['title']}</h1>
 <p style="margin: 24px 0 0; {DISP}; font-style: italic; font-size: 24px; line-height: 1.35; color: {ROSE}">{p_['dek']}</p>
 <p style="margin: 28px 0 0; font-size: 14px; letter-spacing: 0.1em; text-transform: uppercase; color: {MUTED}">By Brandy Gonzalez, Master Injector</p>
 </header>
@@ -1229,7 +1228,7 @@ page += crumbs([('Home', 'Main.dc.html'), ('Contact', None)])
 page += f'''
 <section style="{WRAP}; padding-top: 48px; padding-bottom: 104px; display: flex; flex-wrap: wrap; gap: 64px">
 <div style="flex: 1 1 440px; min-width: 0">
-<h1 style="margin: 0; {DISP}; font-weight: 400; font-size: clamp(52px, 7vw, 112px); line-height: 1.04; letter-spacing: -0.01em">Contact Beautified Studios</h1>
+<h1 style="margin: 0; {DISP}; font-weight: 400; font-size: clamp(38px, 4.4vw, 62px); line-height: 1.04; letter-spacing: -0.01em">Contact Beautified Studios</h1>
 <p style="{P}; margin-top: 24px; font-size: 19px; max-width: 460px">Questions about a treatment, pricing or training? Send a note and Brandy will get back to you. Ready to book? <a href="{BOOK_URL}" style="color: {INK}">Book online</a>.</p>
 <div style="margin-top: 48px; display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 32px; border-top: 1px solid {LINE}; padding-top: 32px">
 <div><p style="margin: 0; font-size: 13px; letter-spacing: 0.12em; text-transform: uppercase; color: {MUTED}">Call or text</p><p style="margin: 6px 0 0; {DISP}; font-size: 26px"><a href="{TEL}" style="color: {INK}; text-decoration: none">{PHONE}</a></p></div>
@@ -1275,7 +1274,7 @@ page += f'''
 <section style="{WRAP}; padding-top: 48px; padding-bottom: 96px; display: flex; flex-wrap: wrap; gap: 56px; align-items: stretch">
 <div style="flex: 1 1 560px; min-width: 0; display: flex; flex-direction: column; justify-content: center">
 <p style="{EYEBROW}">For beauty professionals</p>
-<h1 style="margin: 0; {DISP}; font-weight: 400; font-size: clamp(52px, 7vw, 108px); line-height: 1.02; letter-spacing: -0.01em">Beautified Studios <em style="color: {ROSE}">Academy</em></h1>
+<h1 style="margin: 0; {DISP}; font-weight: 400; font-size: clamp(38px, 4.4vw, 62px); line-height: 1.02; letter-spacing: -0.01em">Beautified Studios <em style="color: {ROSE}">Academy</em></h1>
 <p style="{P}; margin-top: 24px; font-size: 20px; max-width: 560px">1:1 beauty training in San Antonio. Learn injectables, permanent makeup or lashes one on one with Brandy Gonzalez and leave with a certificate of completion.</p>
 <div style="margin-top: 32px; display: flex; flex-wrap: wrap; gap: 14px"><a href="#courses" style="{BTN}">View courses</a><a href="{TEL}" style="{BTN_O}">Call {PHONE}</a></div>
 </div>
@@ -1317,7 +1316,7 @@ page = head('What We Need | Beautified Studios Website', 'Photo and content chec
 page += f'''
 <section style="background: {WINE}; color: {PAPER}"><div style="{WRAP}; padding-top: 72px; padding-bottom: 72px">
 {wordmark(True)}
-<h1 style="margin: 40px 0 0; {DISP}; font-weight: 400; font-size: clamp(48px, 6vw, 92px); line-height: 1.04">What we need from you</h1>
+<h1 style="margin: 40px 0 0; {DISP}; font-weight: 400; font-size: clamp(38px, 4.4vw, 62px); line-height: 1.04">What we need from you</h1>
 <p style="margin: 20px 0 0; font-size: 19px; color: #E9D5D1; max-width: 640px">Everything below fills the photo boxes and blanks across the new site. Phone photos are fine, the clearer and better lit the better. Every client photo needs the client\'s consent.</p>
 </div></section>
 <section style="{WRAP}; padding-top: 88px; padding-bottom: 40px">
