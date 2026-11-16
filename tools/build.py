@@ -595,6 +595,7 @@ home += f'''
 <path d="M164 316 Q 200 348 236 316"></path>
 <path d="M112 262 Q 124 272 140 268" opacity=".4"></path><path d="M288 262 Q 276 272 260 268" opacity=".4"></path>
 </svg>
+<span style="position: absolute; left: 16px; bottom: 14px; background: rgba(247,240,236,.92); border: 1px solid {LINE}; border-radius: 999px; padding: 6px 14px; font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; color: {ROSE}">Illustration · a real model photo goes here</span>
 <sc-for list="{{{{zones}}}}" as="z" hint-placeholder-count="6">
 <button type="button" onClick="{{{{z.pick}}}}" aria-label="{{{{z.title}}}}" style="{{{{z.pinStyle}}}}">{{{{z.num}}}}</button>
 </sc-for>
