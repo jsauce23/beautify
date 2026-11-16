@@ -6,7 +6,7 @@ import json, os, re, runpy, shutil, sys, html as H
 HERE = os.path.dirname(os.path.abspath(__file__))
 ROOT = os.path.dirname(HERE)
 OUT = os.path.join(ROOT, 'site')
-SITE_URL = 'https://beautifiedstudios.com'   # change to the final domain
+SITE_URL = 'https://beaurify-demo.netlify.app'   # change to the final domain at launch
 
 G = runpy.run_path(os.path.join(HERE, 'build.py'))
 FILES, SERVICES, AREAS, FAQ_GROUPS, ZONES = G['FILES'], G['SERVICES'], G['AREAS'], G['FAQ_GROUPS'], G['ZONES']
@@ -122,6 +122,8 @@ def convert(fname, src):
              f'<link rel="canonical" href="{page_url}">\n{robots}'
              f'<meta property="og:type" content="website">\n<meta property="og:title" content="{title}">\n'
              f'<meta property="og:description" content="{desc}">\n<meta property="og:url" content="{page_url}">\n'
+             f'<meta property="og:site_name" content="Beautified Studios">\n<meta property="og:image" content="{SITE_URL}/assets/og-image.png">\n<meta property="og:image:width" content="1200">\n<meta property="og:image:height" content="630">\n<meta property="og:image:alt" content="Beautified Studios, beauty studio and injector in San Antonio">\n'
+             f'<meta name="twitter:card" content="summary_large_image">\n<meta name="twitter:title" content="{title}">\n<meta name="twitter:description" content="{desc}">\n<meta name="twitter:image" content="{SITE_URL}/assets/og-image.png">\n'
              f'<link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">\n'
              f'{helmet}\n{ld}')
     src = src.replace('<script src="./support.js"></script>', extra)
@@ -153,6 +155,7 @@ def main():
         if fname != 'photo-checklist.dc.html':
             urls.append(u)
     shutil.copy(os.path.join(HERE, 'static', 'scheduler.js'), os.path.join(OUT, 'assets', 'scheduler.js'))
+    shutil.copy(os.path.join(HERE, 'static', 'og-image.png'), os.path.join(OUT, 'assets', 'og-image.png'))
     with open(os.path.join(OUT, 'assets', 'favicon.svg'), 'w') as f:
         f.write('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64"><rect width="64" height="64" rx="14" fill="#4A1F28"/><text x="32" y="44" text-anchor="middle" font-family="Georgia,serif" font-size="36" fill="#F7F0EC">B</text></svg>')
     # thanks page

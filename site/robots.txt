@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 Disallow: /photo-checklist/
-Sitemap: https://beautifiedstudios.com/sitemap.xml
+Sitemap: https://beaurify-demo.netlify.app/sitemap.xml
