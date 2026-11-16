@@ -68,7 +68,7 @@ function draw(){
   Z.forEach(function(z){
     var on=z.id===cur;
     var b=document.createElement('button'); b.type='button'; b.setAttribute('aria-label',z.title); b.textContent=z.num;
-    b.style.cssText='position:absolute;left:'+z.x+';top:'+z.y+';transform:translate(-50%%,-50%%);width:46px;height:46px;border-radius:999px;font-family:Jost,sans-serif;font-size:15px;font-weight:500;cursor:pointer;'+(on?'background:#4A1F28;color:#F7F0EC;border:2px solid #F7F0EC;box-shadow:0 0 0 8px rgba(74,31,40,.18);':'background:#F7F0EC;color:#4A1F28;border:2px solid #4A1F28;');
+    b.style.cssText='position:absolute;left:'+z.x+';top:'+z.y+';transform:translate(-50%%,-50%%);width:34px;height:34px;border-radius:999px;font-family:Jost,sans-serif;font-size:13px;font-weight:500;cursor:pointer;'+(on?'background:#4A1F28;color:#F7F0EC;border:2px solid #F7F0EC;box-shadow:0 0 0 6px rgba(74,31,40,.18);':'background:#F7F0EC;color:#4A1F28;border:2px solid #4A1F28;');
     b.onclick=function(){cur=z.id;draw();}; pins.appendChild(b);
     var r=document.createElement('button'); r.type='button';
     r.style.cssText='display:flex;gap:16px;align-items:baseline;width:100%%;padding:16px 0;background:transparent;border:0;border-top:1px solid #DCC6C1;font-family:inherit;text-align:left;cursor:pointer;color:'+(on?'#4A1F28':'#463A3C');

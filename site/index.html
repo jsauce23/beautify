@@ -118,7 +118,20 @@ button:disabled{opacity:.4;cursor:not-allowed}
 <div style="display: flex; flex-wrap: wrap; gap: 64px; align-items: center">
 <div style="flex: 1 1 440px; min-width: 0; max-width: 560px; margin: 0 auto">
 <div style="position: relative; width: 100%; aspect-ratio: 4 / 5; background: #EED9D4; border-radius: 4px">
-<span style="position: absolute; left: 20px; bottom: 18px; font-size: 13px; letter-spacing: 0.12em; text-transform: uppercase; color: #6E5A5D">P03 · Front facing model portrait</span>
+<svg aria-hidden="true" viewBox="0 0 400 500" preserveAspectRatio="xMidYMid slice" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%" fill="none" stroke="#8E4B57" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+<path d="M200 36 C 96 36 44 120 48 232 C 52 330 66 420 40 500" opacity=".55"></path>
+<path d="M200 36 C 304 36 356 120 352 232 C 348 330 334 420 360 500" opacity=".55"></path>
+<path d="M200 58 C 288 58 326 132 324 214 C 322 298 298 358 256 398 C 236 416 219 426 200 426 C 181 426 164 416 144 398 C 102 358 78 298 76 214 C 74 132 112 58 200 58 Z"></path>
+<path d="M158 418 C 160 450 158 476 150 500"></path><path d="M242 418 C 240 450 242 476 250 500"></path>
+<path d="M128 172 Q 156 156 184 168"></path><path d="M216 168 Q 244 156 272 172"></path>
+<path d="M134 202 Q 157 214 180 202"></path><path d="M220 202 Q 243 214 266 202"></path>
+<path d="M140 206 l -4 6 M150 210 l -2 7 M160 211 l 0 7 M170 209 l 2 6" stroke-width="1.4"></path>
+<path d="M260 206 l 4 6 M250 210 l 2 7 M240 211 l 0 7 M230 209 l -2 6" stroke-width="1.4"></path>
+<path d="M202 190 C 198 218 190 240 194 252 Q 202 260 212 252"></path>
+<path d="M164 316 Q 182 302 200 311 Q 218 302 236 316 Q 200 324 164 316 Z"></path>
+<path d="M164 316 Q 200 348 236 316"></path>
+<path d="M112 262 Q 124 272 140 268" opacity=".4"></path><path d="M288 262 Q 276 272 260 268" opacity=".4"></path>
+</svg>
 <div id="fm-pins"></div>
 </div>
 </div>
@@ -313,7 +326,7 @@ function draw(){
   Z.forEach(function(z){
     var on=z.id===cur;
     var b=document.createElement('button'); b.type='button'; b.setAttribute('aria-label',z.title); b.textContent=z.num;
-    b.style.cssText='position:absolute;left:'+z.x+';top:'+z.y+';transform:translate(-50%,-50%);width:46px;height:46px;border-radius:999px;font-family:Jost,sans-serif;font-size:15px;font-weight:500;cursor:pointer;'+(on?'background:#4A1F28;color:#F7F0EC;border:2px solid #F7F0EC;box-shadow:0 0 0 8px rgba(74,31,40,.18);':'background:#F7F0EC;color:#4A1F28;border:2px solid #4A1F28;');
+    b.style.cssText='position:absolute;left:'+z.x+';top:'+z.y+';transform:translate(-50%,-50%);width:34px;height:34px;border-radius:999px;font-family:Jost,sans-serif;font-size:13px;font-weight:500;cursor:pointer;'+(on?'background:#4A1F28;color:#F7F0EC;border:2px solid #F7F0EC;box-shadow:0 0 0 6px rgba(74,31,40,.18);':'background:#F7F0EC;color:#4A1F28;border:2px solid #4A1F28;');
     b.onclick=function(){cur=z.id;draw();}; pins.appendChild(b);
     var r=document.createElement('button'); r.type='button';
     r.style.cssText='display:flex;gap:16px;align-items:baseline;width:100%;padding:16px 0;background:transparent;border:0;border-top:1px solid #DCC6C1;font-family:inherit;text-align:left;cursor:pointer;color:'+(on?'#4A1F28':'#463A3C');
