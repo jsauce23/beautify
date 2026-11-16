@@ -19,7 +19,7 @@
   var DOWS = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
   var MONS = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
   var SERIF = "font-family: 'DM Serif Display', Georgia, serif";
-  var LABEL = 'display: block; margin: 0 0 12px; ' + SERIF + '; font-size: 24px; color: #1A1314';
+  var LABEL = 'display: block; margin: 0 0 12px; ' + SERIF + '; font-size: 20px; color: #1A1314';
   var INP = 'width: 100%; box-sizing: border-box; font-family: inherit; font-size: 17px; padding: 16px; border: 1px solid #DCC6C1; border-radius: 4px; background: #FFFFFF; color: #1A1314';
   var SMALL = 'display: flex; flex-direction: column; gap: 6px; font-size: 15px; color: #463A3C';
 
