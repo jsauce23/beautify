@@ -435,7 +435,7 @@ def visit_block():
     dirs = 'https://www.google.com/maps/dir/?api=1&amp;destination=1603+Babcock+Rd+Suite+230,+San+Antonio,+TX+78229'
     return f'''<section style="{WRAP}; padding-top: 104px; padding-bottom: 104px">
 <div style="display: flex; flex-wrap: wrap; gap: 48px; align-items: stretch">
-<div style="flex: 1 1 420px; min-width: 0; display: flex; flex-direction: column; justify-content: space-between; gap: 40px">
+<div style="flex: 1 1 420px; min-width: 0; display: flex; flex-direction: column; justify-content: center; gap: 32px">
 <div>
 <p style="{EYEBROW}">Location &amp; hours</p>
 <h2 style="{H2}">Beautified Studios, San Antonio</h2>
@@ -532,7 +532,7 @@ home += nav()
 home += f'''
 <!-- HERO -->
 <section style="{WRAP}; padding-top: 48px; padding-bottom: 64px; display: flex; flex-wrap: wrap; gap: 56px; align-items: stretch">
-<div style="flex: 1 1 600px; min-width: 0; display: flex; flex-direction: column; justify-content: space-between; gap: 48px">
+<div style="flex: 1 1 600px; min-width: 0; display: flex; flex-direction: column; justify-content: center; gap: 32px">
 <div>
 <p style="{EYEBROW}">Beautified Studios · Master Injector Brandy Gonzalez</p>
 <h1 style="margin: 0; {DISP}; font-weight: 400; font-size: clamp(40px, 4.4vw, 66px); line-height: 1.08; letter-spacing: -0.01em">Beauty Studio &amp; Injector in <em style="color: {ROSE}">San Antonio, TX</em></h1>
@@ -1037,7 +1037,7 @@ page += nav()
 page += crumbs([('Home', 'Main.dc.html'), ('About', None)])
 page += f'''
 <section style="{WRAP}; padding-top: 48px; padding-bottom: 104px; display: flex; flex-wrap: wrap; gap: 56px; align-items: stretch">
-<div style="flex: 1 1 560px; min-width: 0; display: flex; flex-direction: column; justify-content: space-between; gap: 40px">
+<div style="flex: 1 1 560px; min-width: 0; display: flex; flex-direction: column; justify-content: center; gap: 28px">
 <div><p style="{EYEBROW}">Owner &amp; Master Injector</p>
 <h1 style="margin: 0; {DISP}; font-weight: 400; font-size: clamp(38px, 4.4vw, 62px); line-height: 1.02; letter-spacing: -0.01em">Brandy <em style="color: {ROSE}">Gonzalez</em></h1></div>
 <div>
