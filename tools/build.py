@@ -531,11 +531,11 @@ home = head('Cosmetic Injector San Antonio | Lip Filler, Daxxify &amp; Facial Ba
 home += nav()
 home += f'''
 <!-- HERO -->
-<section style="{WRAP}; padding-top: 64px; padding-bottom: 72px; display: flex; flex-wrap: wrap; gap: 56px; align-items: stretch">
+<section style="{WRAP}; padding-top: 48px; padding-bottom: 64px; display: flex; flex-wrap: wrap; gap: 56px; align-items: stretch">
 <div style="flex: 1 1 600px; min-width: 0; display: flex; flex-direction: column; justify-content: space-between; gap: 48px">
 <div>
 <p style="{EYEBROW}">Beautified Studios · Master Injector Brandy Gonzalez</p>
-<h1 style="margin: 0; {DISP}; font-weight: 400; font-size: clamp(56px, 7.4vw, 120px); line-height: 1.02; letter-spacing: -0.01em">Beauty Studio &amp; Injector in <em style="color: {ROSE}">San Antonio, TX</em></h1>
+<h1 style="margin: 0; {DISP}; font-weight: 400; font-size: clamp(40px, 4.4vw, 66px); line-height: 1.08; letter-spacing: -0.01em">Beauty Studio &amp; Injector in <em style="color: {ROSE}">San Antonio, TX</em></h1>
 </div>
 <div>
 <p style="{P}; font-size: 20px; max-width: 600px">Lip filler, Daxxify, jaw filler, facial balancing, teeth whitening, tooth gems, lip blush and brow color correction. Clear prices, financing available, and online booking in about a minute.</p>
@@ -552,7 +552,7 @@ home += f'''
 </div>
 </div>
 </div>
-<div style="flex: 1 1 440px; min-width: 0; position: relative; min-height: 640px">
+<div style="flex: 1 1 400px; min-width: 0; position: relative; min-height: 540px">
 {ph('P01', 'Brandy, editorial portrait', 'position: absolute; top: 0; right: 0; width: 86%; height: 88%; border-radius: 400px 400px 4px 4px')}
 {ph('P02', 'Brandy injecting', 'position: absolute; left: 0; bottom: 0; width: 44%; aspect-ratio: 1 / 1; border-radius: 999px; border: 10px solid #F7F0EC')}
 <p aria-hidden="true" style="position: absolute; right: -4px; bottom: 0; margin: 0; writing-mode: vertical-rl; transform: rotate(180deg); font-size: 11px; letter-spacing: 0.4em; text-transform: uppercase; color: {ROSE}">10 years in beauty</p>
