@@ -108,7 +108,10 @@ def convert(fname, src):
         src = src.replace('</body>', (FACEMAP_JS % json.dumps(zones)) + '\n</body>')
     assert '{{' not in src, (fname, src[src.index('{{') - 80: src.index('{{') + 80])
     # links
-    src = re.sub(r'href="([A-Za-z0-9_\-]+\.dc\.html)(#[\w\-]+)?"', lambda mm: f'href="{url_for(mm.group(1))}{mm.group(2) or ""}"', src)
+    stem = fname[:-len('.dc.html')]
+    sv = next((x for x in SERVICES if x['slug'] == stem), None)
+    src = src.replace('href="#book"', 'href="book.dc.html' + (f'?service={sv["id"]}' if sv else '') + '"')
+    src = re.sub(r'href="([A-Za-z0-9_\-]+\.dc\.html)(\?[\w=&]+)?(#[\w\-]+)?"', lambda mm: f'href="{url_for(mm.group(1))}{mm.group(2) or ""}{mm.group(3) or ""}"', src)
     # head extras
     page_url = SITE_URL + url_for(fname)
     title = re.search(r'<title>(.*?)</title>', src, re.S).group(1)

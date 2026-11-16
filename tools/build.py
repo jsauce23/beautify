@@ -367,7 +367,7 @@ def nav():
 </div>
 </nav>
 </header>
-<a href="lip-filler-san-antonio.dc.html#book" style="display: block; background: {ROSE}; color: #FFFFFF; text-decoration: none; text-align: center; padding: 12px 24px; font-size: 15px; line-height: 1.5"><strong style="font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; font-size: 13px">Limited time</strong> · Complimentary lip flip with purchase of a full syringe of filler ($200 value) · <span style="text-decoration: underline">Book now</span></a>
+<a href="book.dc.html?service=rha" style="display: block; background: {ROSE}; color: #FFFFFF; text-decoration: none; text-align: center; padding: 12px 24px; font-size: 15px; line-height: 1.5"><strong style="font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; font-size: 13px">Limited time</strong> · Complimentary lip flip with purchase of a full syringe of filler ($200 value) · <span style="text-decoration: underline">Book now</span></a>
 '''
 
 def crumbs(items):
@@ -422,14 +422,11 @@ def faq_list(items, dark=False):
     return ''.join(out)
 
 def booking_block(preset='', heading='Book an appointment', sub='Choose what you are booking and pick a time. Brandy confirms by text.'):
-    pre = f' preset="{preset}"' if preset else ''
-    return f'''<section id="book" style="background: #F1E4E0; border-top: 1px solid {LINE}">
-<div style="{WRAP}; padding-top: 104px; padding-bottom: 104px">
-<div style="display: flex; flex-wrap: wrap; gap: 16px 48px; justify-content: space-between; align-items: flex-end; margin-bottom: 40px">
-<div><p style="{EYEBROW}">Online booking</p><h2 style="{H2}">{heading}</h2></div>
-<p style="{P}; max-width: 420px">{sub}</p>
-</div>
-<dc-import name="Scheduler"{pre} hint-size="100%,940px"></dc-import>
+    href = BOOK_URL + (f'?service={preset}' if preset else '')
+    return f'''<section style="background: #F1E4E0; border-top: 1px solid {LINE}">
+<div style="{WRAP}; padding-top: 88px; padding-bottom: 88px; display: flex; flex-wrap: wrap; gap: 24px 48px; justify-content: space-between; align-items: center">
+<div style="flex: 1 1 480px"><p style="{EYEBROW}">Online booking</p><h2 style="{H2}">{heading}</h2><p style="{P}; margin-top: 16px; max-width: 520px">{sub}</p></div>
+<a href="{href}" style="{BTN}; padding: 22px 44px">Book appointment</a>
 </div>
 </section>
 '''

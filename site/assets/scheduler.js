@@ -37,7 +37,8 @@
 
   function mount(root) {
     var DAYS = days();
-    var st = { svc: root.getAttribute('data-preset') || '', day: null, time: null, name: '', phone: '', email: '', sending: false, done: false, error: '' };
+    var q = new URLSearchParams(location.search).get('service');
+    var st = { svc: root.getAttribute('data-preset') || (SERVICES.some(function (x) { return x.id === q; }) ? q : ''), day: null, time: null, name: '', phone: '', email: '', sending: false, done: false, error: '' };
     function svc() { return SERVICES.filter(function (s) { return s.id === st.svc; })[0] || null; }
     function day() { return DAYS.filter(function (d) { return d.key === st.day; })[0] || null; }
     function ready() { return svc() && st.day && st.time && st.name.trim() && st.phone.trim() && st.email.trim(); }
