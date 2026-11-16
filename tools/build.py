@@ -559,8 +559,8 @@ home += f'''
 </div>
 </div>
 <div style="flex: 1 1 400px; min-width: 0; position: relative; min-height: 540px">
-{ph('P01', 'Brandy, editorial portrait', 'position: absolute; top: 0; right: 0; width: 86%; height: 88%; border-radius: 400px 400px 4px 4px')}
-{ph('P02', 'Brandy injecting', 'position: absolute; left: 0; bottom: 0; width: 44%; aspect-ratio: 1 / 1; border-radius: 999px; border: 10px solid #F7F0EC')}
+<div style="background: {BLUSH}; position: relative; overflow: hidden; position: absolute; top: 0; right: 0; width: 86%; height: 88%; border-radius: 400px 400px 4px 4px"><img src="/assets/img/brandy-gonzalez-injector-san-antonio.jpg" alt="Brandy Gonzalez, Master Injector, performing a filler treatment at Beautified Studios in San Antonio" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; object-position: center 22%"></div>
+<div style="background: {BLUSH}; position: relative; overflow: hidden; position: absolute; left: 0; bottom: 0; width: 44%; aspect-ratio: 1 / 1; border-radius: 999px; border: 10px solid #F7F0EC"><img src="/assets/img/brandy-gonzalez-consultation.jpg" alt="Brandy Gonzalez consulting with a client at Beautified Studios" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; object-position: 35% 30%"></div>
 <p aria-hidden="true" style="position: absolute; right: -4px; bottom: 0; margin: 0; writing-mode: vertical-rl; transform: rotate(180deg); font-size: 11px; letter-spacing: 0.4em; text-transform: uppercase; color: {ROSE}">10 years in beauty</p>
 </div>
 </section>

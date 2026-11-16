@@ -156,6 +156,7 @@ def main():
             urls.append(u)
     shutil.copy(os.path.join(HERE, 'static', 'scheduler.js'), os.path.join(OUT, 'assets', 'scheduler.js'))
     shutil.copy(os.path.join(HERE, 'static', 'og-image.png'), os.path.join(OUT, 'assets', 'og-image.png'))
+    shutil.copytree(os.path.join(HERE, 'static', 'img'), os.path.join(OUT, 'assets', 'img'))
     with open(os.path.join(OUT, 'assets', 'favicon.svg'), 'w') as f:
         f.write('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64"><rect width="64" height="64" rx="14" fill="#4A1F28"/><text x="32" y="44" text-anchor="middle" font-family="Georgia,serif" font-size="36" fill="#F7F0EC">B</text></svg>')
     # thanks page
